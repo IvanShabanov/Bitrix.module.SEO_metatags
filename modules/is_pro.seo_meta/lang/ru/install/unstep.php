@@ -1,0 +1,5 @@
+<?
+$MESS["ISPRO_SEO_METATAGS_UNSTEP_BEFORE"] 	   = "Модуль";
+$MESS["ISPRO_SEO_METATAGS_UNSTEP_AFTER"]  	   = "удален";
+$MESS["ISPRO_SEO_METATAGS_STEP_SUBMIT_BACK"]   = "Вернуться в список";
+?>
