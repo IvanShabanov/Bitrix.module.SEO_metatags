@@ -9,10 +9,10 @@ $MESS['ISPRO_SEO_METATAGS_FORM_TEXT'] = '<div><b>Справка как став�
     <li>Из настроек элемента инфоблока</li>
     <li>Текущий сео модуль (см форму ниже)</li>
 </ol>';
-$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-TITLE'] = 'Заголовок окна браузера Title:';
-$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-KEYWORDS'] = 'Ключевые слова meta Keywords:';
-$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-DESCRIPTION'] = 'Описание страницы meta Description:';
-$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-H1'] = 'Заголовок страницы H1:';
-$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-CANONICA'] = 'Канонический URL:';
-$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-H1'] = 'meta Robots:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-TITLE'] = 'Заголовок окна браузера - Title:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-KEYWORDS'] = 'Ключевые слова - Keywords:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-DESCRIPTION'] = 'Описание страницы - Description:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-H1'] = 'Заголовок страницы - H1:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-CANONICAL'] = 'Канонический URL - canonical:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-ROBOTS'] = 'Инструкция для поисковых роботов - robots:';
 $MESS['ISPRO_SEO_METATAGS_FORM_BUTTON_SAVE'] = 'Сохранить';
