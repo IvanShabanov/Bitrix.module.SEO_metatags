@@ -45,6 +45,7 @@ if ($request->getpost('import') == 'Y') {
                     }
                 }
             }
+            @unlink($filename);
         }
     }
 }
