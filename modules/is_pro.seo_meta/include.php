@@ -53,7 +53,7 @@ class MainFunctions
                     "TYPE" => "", //BIG - большая кнопка, иначе маленькая
                     "MAIN_SORT" => 10000, //индекс сортировки для групп кнопок
                     "SORT" => 10, //сортировка внутри группы
-                    "HREF" => "javascript:(new BX.CDialog({'content_url':'" . $url_cur . "/install/form.php?" .
+                    "HREF" => "javascript:(new BX.CDialog({'content_url':'" . $url_cur . "/install/admin/form.php?" .
                         "url=" . urlencode($url) . "&" .
                         "','width':'','height':'','min_width':'450','min_height':'250'})).Show();BX.removeClass(this.parentNode.parentNode, 'bx-panel-button-icon-active');",
 

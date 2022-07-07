@@ -1,37 +1,27 @@
 <?
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_SET_1'] = 'Описание';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_TITLE_SET_1'] = 'Помощник установки метатегов на страницы';
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_NOTE'] = '
-<h3>Помощник установки метатегов на страницы</h3>
-<p>Что делает:</p>
 <p>Уставвливает на страницу мета теги</p>
-    <ol>
-        <li>Title</li>
-        <li>Keywords</li>
-        <li>Description</li>
-        <li>H1</li>
-        <li>canonical</li>
-        <li>robots</li>
-    </ol>
-
-<p>В администратовной панели <br>
+<ol>
+    <li>Title</li>
+    <li>Keywords</li>
+    <li>Description</li>
+    <li>H1</li>
+    <li>canonical</li>
+    <li>robots</li>
+</ol>
+<p>Для установки метатегов на нужной странице в администратовной панели нажмите<br>
     <img src="#MODULE_PATH#/install/images/admin_panel.jpg">
 </p>
-<p>После выставления модулем метатегов их можно обработать по событию</p>
-<pre style="padding: 15px; background: #fff;">
-// скрипт в файле /bitrix/php_interface/init.php
-AddEventHandler("is_pro.seo_meta", "OnISProSeoMatatagsSet", Array("MyClass", "OnISProSeoMatatagsSet"));
-class MyClass
-{
-    function OnISProSeoMatatagsSet(&$arFields)
-    {
-        $arFields["UF_TITLE"] .= " - ООО Ромашка";
-        $arFields["UF_DESCRIPTION"] .= " - ООО Ромашка";
-        if ($arFields["UF_URL"] == "/test/") {
-            $arFields["UF_ROBOTS"] = "noindex, nofollow";
-        }
-    }
-}
-</pre>
 ';
 
-$MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_SET'] = 'SEO Metatags';
-$MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_TITLE_SET'] = '';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_DEVELOPER'] = '<h3>Для разработчиков - есть событие для более точной кастомизации метатегов</h3>';
+
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_SET_2'] = 'Экспорт / Импорт';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_TITLE_SET_2'] = 'Экспорт и импорт всех метатегов для страниц';
+
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_EXPORT'] = 'Файл экспорта метатегов, установленных через модуль: <a href="#MODULE_PATH#/install/admin/export.php">скачать csv</a>';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_IMPORT'] = 'Файл csv для импорта метатегов (поля должны быть такие-же как и в файле экспорта):';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_CLEAR'] = 'Удалить все метатеги в модуле';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_BTN_SAVE'] = 'Выполнить';

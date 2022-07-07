@@ -170,6 +170,7 @@ class MainClass
     public function saveMeta($arFields)
     {
         $arQuery['filter'] = array('=UF_URL' => $arFields['UF_URL']);
+        $arQuery['select'] = array('ID');
         $dbData = $this->strEntityDataClass::getList($arQuery);
         $arMeta = $dbData->fetch();
         if ($arMeta['ID'] != '') {
@@ -186,5 +187,25 @@ class MainClass
         $dbData = $this->strEntityDataClass::getList($arQuery);
         $arMeta = $dbData->fetch();
         return $arMeta;
+    }
+
+    public function getAllMeta()
+    {
+        $arItems = [];
+        $rsData = $this->strEntityDataClass::getList(array(
+            'order' => array('ID' => 'ASC'),
+        ));
+        while ($arItem = $rsData->Fetch()) {
+            $arItems[] = $arItem;
+        }
+        return $arItems;
+    }
+
+    public function clearAllMeta()
+    {
+        $arItems = $this->getAllMeta();
+        foreach ($arItems as $arItem) {
+            $this->strEntityDataClass::delete($arItem['ID']);
+        };
     }
 }
