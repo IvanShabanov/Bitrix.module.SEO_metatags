@@ -40,6 +40,12 @@ $arResult =  $_REQUEST;
         <label><?=Loc::getMessage('ISPRO_SEO_METATAGS_FORM_LABEL-H1')?></label>
         <input type="text" name="h1" value="<?=$arResult['UF_H1']?>">
 
+        <label><?=Loc::getMessage('ISPRO_SEO_METATAGS_FORM_LABEL-CANONICAL')?></label>
+        <input type="text" name="canonical" value="<?=$arResult['UF_CANONICAL']?>">
+
+        <label><?=Loc::getMessage('ISPRO_SEO_METATAGS_FORM_LABEL-ROBOTS')?></label>
+        <input type="text" name="robots" value="<?=$arResult['UF_ROBOTS']?>">
+
         <button type="submit"><?=Loc::getMessage('ISPRO_SEO_METATAGS_FORM_BUTTON_SAVE')?></button>
     </form>
 </div>

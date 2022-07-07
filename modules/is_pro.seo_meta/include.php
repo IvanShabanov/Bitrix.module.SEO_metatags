@@ -42,6 +42,8 @@ class Main
                         'UF_DESCRIPTION' => $request->getpost('description'),
                         'UF_KEYWORDS' => $request->getpost('keywords'),
                         'UF_H1' => $request->getpost('h1'),
+                        'UF_CANONICAL' => $request->getpost('canonical'),
+                        'UF_ROBOTS' => $request->getpost('robots'),
                     );
                     if ($arMeta['ID'] != '') {
                         $result = $strEntityDataClass::update($arMeta['ID'], $arFields);
@@ -55,13 +57,19 @@ class Main
                 $APPLICATION->SetPageProperty('title', $arMeta['UF_TITLE']);
             };
             if (trim($arMeta['UF_DESCRIPTION']) != '') {
-                $APPLICATION->SetPageProperty(description, $arMeta['UF_DESCRIPTION']);
+                $APPLICATION->SetPageProperty('description', $arMeta['UF_DESCRIPTION']);
             };
             if (trim($arMeta['UF_KEYWORDS']) != '') {
-                $APPLICATION->SetPageProperty(keywords, $arMeta['UF_KEYWORDS']);
+                $APPLICATION->SetPageProperty('keywords', $arMeta['UF_KEYWORDS']);
             };
             if (trim($arMeta['UF_H1']) != '') {
                 $APPLICATION->SetTitle($arMeta['UF_H1']);
+            };
+            if (trim($arMeta['UF_CANONICAL']) != '') {
+                $APPLICATION->SetPageProperty('canonical', $arMeta['UF_KEYWORDS']);
+            };
+            if (trim($arMeta['UF_ROBOTS']) != '') {
+                $APPLICATION->SetPageProperty('robots', $arMeta['UF_KEYWORDS']);
             };
             if ($USER->IsAdmin()) {
                 $doc_root = \Bitrix\Main\Application::getDocumentRoot();
@@ -210,6 +218,28 @@ class Main
                     "EDIT_FORM_LABEL" => array('ru' => 'H1', 'en' => 'H1'),
                     "LIST_COLUMN_LABEL" => array('ru' => 'H1', 'en' => 'H1'),
                     "LIST_FILTER_LABEL" => array('ru' => 'H1', 'en' => 'H1'),
+                    "ERROR_MESSAGE" => array('ru' => '', 'en' => ''),
+                    "HELP_MESSAGE" => array('ru' => '', 'en' => ''),
+                ),
+                'UF_CANONICAL' => array(
+                    'ENTITY_ID' => $UFObject,
+                    'FIELD_NAME' => 'UF_CANONICAL',
+                    'USER_TYPE_ID' => 'string',
+                    'MANDATORY' => 'N',
+                    "EDIT_FORM_LABEL" => array('ru' => 'CANONICAL', 'en' => 'CANONICAL'),
+                    "LIST_COLUMN_LABEL" => array('ru' => 'CANONICAL', 'en' => 'CANONICAL'),
+                    "LIST_FILTER_LABEL" => array('ru' => 'CANONICAL', 'en' => 'CANONICAL'),
+                    "ERROR_MESSAGE" => array('ru' => '', 'en' => ''),
+                    "HELP_MESSAGE" => array('ru' => '', 'en' => ''),
+                ),
+                'UF_ROBOTS' => array(
+                    'ENTITY_ID' => $UFObject,
+                    'FIELD_NAME' => 'UF_ROBOTS',
+                    'USER_TYPE_ID' => 'string',
+                    'MANDATORY' => 'N',
+                    "EDIT_FORM_LABEL" => array('ru' => 'ROBOTS', 'en' => 'ROBOTS'),
+                    "LIST_COLUMN_LABEL" => array('ru' => 'ROBOTS', 'en' => 'ROBOTS'),
+                    "LIST_FILTER_LABEL" => array('ru' => 'ROBOTS', 'en' => 'ROBOTS'),
                     "ERROR_MESSAGE" => array('ru' => '', 'en' => ''),
                     "HELP_MESSAGE" => array('ru' => '', 'en' => ''),
                 )

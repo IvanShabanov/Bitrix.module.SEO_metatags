@@ -13,4 +13,6 @@ $MESS['ISPRO_SEO_METATAGS_FORM_LABEL-TITLE'] = 'Заголовок окна бр
 $MESS['ISPRO_SEO_METATAGS_FORM_LABEL-KEYWORDS'] = 'Ключевые слова meta Keywords:';
 $MESS['ISPRO_SEO_METATAGS_FORM_LABEL-DESCRIPTION'] = 'Описание страницы meta Description:';
 $MESS['ISPRO_SEO_METATAGS_FORM_LABEL-H1'] = 'Заголовок страницы H1:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-CANONICA'] = 'Канонический URL:';
+$MESS['ISPRO_SEO_METATAGS_FORM_LABEL-H1'] = 'meta Robots:';
 $MESS['ISPRO_SEO_METATAGS_FORM_BUTTON_SAVE'] = 'Сохранить';
