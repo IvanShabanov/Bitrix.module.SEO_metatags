@@ -53,6 +53,9 @@ class Main
                     LocalRedirect($url . '?clear_cache=Y');
                 }
             }
+            foreach(GetModuleEvents('', 'OnISProSeoMatatagSet', true) as $arEvent) // event for manipulation with region elements
+                ExecuteModuleEventEx($arEvent, array(&$arMeta));
+
             if (trim($arMeta['UF_TITLE']) != '') {
                 $APPLICATION->SetPageProperty('title', $arMeta['UF_TITLE']);
             };
@@ -66,10 +69,10 @@ class Main
                 $APPLICATION->SetTitle($arMeta['UF_H1']);
             };
             if (trim($arMeta['UF_CANONICAL']) != '') {
-                $APPLICATION->SetPageProperty('canonical', $arMeta['UF_KEYWORDS']);
+                $APPLICATION->SetPageProperty('canonical', $arMeta['UF_CANONICAL']);
             };
             if (trim($arMeta['UF_ROBOTS']) != '') {
-                $APPLICATION->SetPageProperty('robots', $arMeta['UF_KEYWORDS']);
+                $APPLICATION->SetPageProperty('robots', $arMeta['UF_ROBOTS']);
             };
             if ($USER->IsAdmin()) {
                 $doc_root = \Bitrix\Main\Application::getDocumentRoot();
@@ -82,17 +85,14 @@ class Main
                         "MAIN_SORT" => 10000, //индекс сортировки для групп кнопок
                         "SORT" => 10, //сортировка внутри группы
                         "HREF" => "javascript:(new BX.CDialog({'content_url':'".$url_cur."/install/form.php?".
-                            "UF_TITLE=".$arMeta['UF_TITLE']."&amp;".
-                            "UF_DESCRIPTION=".$arMeta['UF_DESCRIPTION']."&amp;".
-                            "UF_KEYWORDS=".$arMeta['UF_KEYWORDS']."&amp;".
-                            "UF_H1=".$arMeta['UF_H1']."&amp;".
+                            "UF_TITLE=".urlencode($arMeta['UF_TITLE'])."&".
+                            "UF_DESCRIPTION=".urlencode($arMeta['UF_DESCRIPTION'])."&".
+                            "UF_KEYWORDS=".urlencode($arMeta['UF_KEYWORDS'])."&".
+                            "UF_H1=".urlencode($arMeta['UF_H1'])."&".
+                            "UF_CANONICAL=".urlencode($arMeta['UF_CANONICAL'])."&".
+                            "UF_ROBOTS=".urlencode($arMeta['UF_ROBOTS'])."&".
                             "','width':'','height':'','min_width':'450','min_height':'250'})).Show();BX.removeClass(this.parentNode.parentNode, 'bx-panel-button-icon-active');",
 
-                        //"HREF" => $url_cur . "/install/form.php", //или javascript:MyJSFunction())
-
-                        /*
-                        (new BX.CDialog({'content_url':'/bitrix/admin/public_folder_edit.php?lang=ru&amp;site=s1&amp;path=%2F&amp;back_url=%2F&amp;siteTemplateId=s1_main_sphinx_sergeland','width':'','height':'','min_width':'450','min_height':'250'})).Show();BX.removeClass(this.parentNode.parentNode, 'bx-panel-button-icon-active');
-                        */
                         "ICON" => "icon-class", //название CSS-класса с иконкой кнопки
                         "SRC" => $url_cur . "/install/images/icon.png",
                         "ALT" => Loc::getMessage('ISPRO_SEO_METATAGS_PANEL_BUTTON_ALT'), //старый вариант
@@ -201,7 +201,7 @@ class Main
                 ),
                 'UF_KEYWORDS' => array(
                     'ENTITY_ID' => $UFObject,
-                    'FIELD_NAME' => 'UF_DKEYWORDS',
+                    'FIELD_NAME' => 'UF_KEYWORDS',
                     'USER_TYPE_ID' => 'string',
                     'MANDATORY' => 'N',
                     "EDIT_FORM_LABEL" => array('ru' => 'KEYWORDS', 'en' => 'KEYWORDS'),
@@ -255,5 +255,13 @@ class Main
             $id = false;
         }
         return $id;
+    }
+
+    function RemoveHL() {
+        Loader::IncludeModule('highloadblock');
+        $arHLBlock = self::getHLblock();
+        if ($arHLBlock) {
+            HL\HighloadBlockTable::delete($arHLBlock);
+        }
     }
 }
