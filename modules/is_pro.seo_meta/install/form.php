@@ -3,7 +3,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_bef
 
 use Bitrix\Main\Localization\Loc;
 Loc::loadMessages(__FILE__);
-$arResult =  $_REQUEST;
+include(__DIR__.'/../classes/main.class.php');
+$SEOmetatags = new \IS_PRO\SEO_metatags\MainClass();
+$arResult =  $SEOmetatags->getMeta($_REQUEST['url']);
 ?>
 <style>
     .SEO_metatags_form {
