@@ -11,6 +11,7 @@ $APPLICATION->RestartBuffer();
 @header('Content-Disposition: attachment; filename="seo_metatags.csv"');
 echo '"'.implode('";"', array_keys($arResult[0])).'"'."\n";
 foreach ($arResult as $arItem) {
+    $arItem = mb_convert_encoding($arItem, "windows-1251", "utf-8");
     echo '"'.implode('";"', $arItem).'"'."\n";
 }
 die();
