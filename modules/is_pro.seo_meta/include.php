@@ -50,7 +50,7 @@ class MainFunctions
                 array(
                     "ID" => "BUTTON_" . $arModuleCfg['MODULE_ID'] . '_ID', //определяет уникальность кнопки
                     "TEXT" => Loc::getMessage('ISPRO_SEO_METATAGS_PANEL_BUTTON_TEXT'),
-                    "TYPE" => "", //BIG - большая кнопка, иначе маленькая
+                    "TYPE" => "BIG", //BIG - большая кнопка, иначе маленькая
                     "MAIN_SORT" => 10000, //индекс сортировки для групп кнопок
                     "SORT" => 10, //сортировка внутри группы
                     "HREF" => "javascript:(new BX.CDialog({'content_url':'" . $url_cur . "/install/admin/form.php?" .
@@ -58,7 +58,7 @@ class MainFunctions
                         "','width':'','height':'','min_width':'450','min_height':'250'})).Show();BX.removeClass(this.parentNode.parentNode, 'bx-panel-button-icon-active');",
 
                     "ICON" => "icon-class", //название CSS-класса с иконкой кнопки
-                    "SRC" => $url_cur . "/install/images/icon.png",
+                    "SRC" => $url_cur . "/install/images/icon.svg",
                     "ALT" => Loc::getMessage('ISPRO_SEO_METATAGS_PANEL_BUTTON_ALT'), //старый вариант
                     "HINT" => array( //тултип кнопки
                         "TITLE" => Loc::getMessage('ISPRO_SEO_METATAGS_PANEL_BUTTON_HINT_TITLE'),
