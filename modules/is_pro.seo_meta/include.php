@@ -25,12 +25,16 @@ class MainFunctions
         };
 
         $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
+        $host = $request->getHttpHost();
         $url = $request->getRequestUri();
         list($url, $get) = explode('?', $url);
-
+        $option['USE_FULL_URL'] = \Bitrix\Main\Config\Option::get($arModuleCfg['MODULE_ID'], 'USE_FULL_URL');
+        if ($option['USE_FULL_URL'] == 'Y') {
+            $url = $host.$url;
+        };
         if ($USER->IsAdmin()) {
 
-            if ($get == 'save_seo_meta=Y') {
+            if ($request->getQuery('save_seo_meta') == 'Y') {
                 $arFields = array(
                     'UF_URL' => $url,
                     'UF_TITLE' => $request->getpost('title'),
@@ -41,11 +45,13 @@ class MainFunctions
                     'UF_ROBOTS' => $request->getpost('robots'),
                 );
                 $SEOmetatags->saveMeta($arFields);
+                $url = $request->getRequestUri();
+                list($url, $get) = explode('?', $url);
                 LocalRedirect($url . '?clear_cache=Y');
             }
 
             $doc_root = \Bitrix\Main\Application::getDocumentRoot();
-            $url_cur = str_replace($doc_root, '', __DIR__);
+            $urlModule = str_replace($doc_root, '', __DIR__);
             $APPLICATION->AddPanelButton(
                 array(
                     "ID" => "BUTTON_" . $arModuleCfg['MODULE_ID'] . '_ID', //определяет уникальность кнопки
@@ -53,12 +59,12 @@ class MainFunctions
                     "TYPE" => "BIG", //BIG - большая кнопка, иначе маленькая
                     "MAIN_SORT" => 10000, //индекс сортировки для групп кнопок
                     "SORT" => 10, //сортировка внутри группы
-                    "HREF" => "javascript:(new BX.CDialog({'content_url':'" . $url_cur . "/install/admin/form.php?" .
+                    "HREF" => "javascript:(new BX.CDialog({'content_url':'" . $urlModule . "/install/admin/form.php?" .
                         "url=" . urlencode($url) . "&" .
                         "','width':'','height':'','min_width':'450','min_height':'250'})).Show();BX.removeClass(this.parentNode.parentNode, 'bx-panel-button-icon-active');",
 
                     "ICON" => "icon-class", //название CSS-класса с иконкой кнопки
-                    "SRC" => $url_cur . "/install/images/icon.svg",
+                    "SRC" => $urlModule . "/install/images/icon.svg",
                     "ALT" => Loc::getMessage('ISPRO_SEO_METATAGS_PANEL_BUTTON_ALT'), //старый вариант
                     "HINT" => array( //тултип кнопки
                         "TITLE" => Loc::getMessage('ISPRO_SEO_METATAGS_PANEL_BUTTON_HINT_TITLE'),

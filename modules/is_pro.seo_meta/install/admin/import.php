@@ -5,7 +5,7 @@ Loc::loadMessages(__FILE__);
 global $APPLICATION;
 
 $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
-if ($request->getpost('import') == 'Y') {
+if ($request->getpost('import') != '') {
     $files = $request->getFile("IMPORT_CSV");
     $charset= $request->getpost('charsetfile');
     include(__DIR__.'/../../classes/main.class.php');
