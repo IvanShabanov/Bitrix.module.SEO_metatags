@@ -23,5 +23,6 @@ $MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_TITLE_SET_2'] = 'Экспорт и и
 
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_EXPORT'] = 'Файл экспорта метатегов, установленных через модуль: <a href="#MODULE_PATH#/install/admin/export.php">скачать csv (utf-8)</a> или <a href="#MODULE_PATH#/install/admin/export.php?convert=windows-1251">скачать csv (windows-1251)</a>';
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_IMPORT'] = 'Файл csv для импорта метатегов (поля должны быть такие-же как и в файле экспорта):';
+$MESS['ISPRO_SEO_METATAGS_OPTIONS_FILE_CHARSET'] = 'Кодировка файла:';
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_CLEAR'] = 'Удалить все метатеги в модуле';
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_BTN_SAVE'] = 'Выполнить';

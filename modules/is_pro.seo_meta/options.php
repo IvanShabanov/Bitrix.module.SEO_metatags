@@ -73,7 +73,7 @@ class MyClass
     }
 }
 </pre>
-<?=EndNote();?>
+    <?=EndNote();?>
 
 
     <?
@@ -89,13 +89,10 @@ class MyClass
     </tr>
 
     <tr>
-        <td  colspan="2">
+        <td>
             <span><?= Loc::getMessage('ISPRO_SEO_METATAGS_OPTIONS_IMPORT'); ?></span>
-            </td>
-    </tr>
-
-    <tr>
-        <td  colspan="2">
+        </td>
+        <td style="width: 70%">
             <?
             echo CFile::InputFile(
                     "IMPORT_CSV",
@@ -114,15 +111,29 @@ class MyClass
         ?>
         </td>
     </tr>
-
     <tr>
-        <td colspan="2" style="padding: 20px 3px;">
-            <input type="checkbox" name="clearall" value="Y" />
-            <?= Loc::getMessage('ISPRO_SEO_METATAGS_OPTIONS_CLEAR'); ?>
+        <td>
+            <?echo Loc::getMessage('ISPRO_SEO_METATAGS_OPTIONS_FILE_CHARSET')?>
+        </td>
+        <td>
+            <select name="charsetfile">
+                <option value="windows-1251">windows-1251</option>
+                <option value="utf-8">utf-8</option>
+            </select>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td>
+            <span><?= Loc::getMessage('ISPRO_SEO_METATAGS_OPTIONS_CLEAR'); ?></span>
+        </td>
+        <td>
+            <input type="checkbox" name="clearall" value="Y" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
             <input type="submit" class="adm-btn-save" name="update" value="<? echo Loc::getMessage('ISPRO_SEO_METATAGS_OPTIONS_BTN_SAVE'); ?>">
             <input type="hidden" name="import" value="Y">
         </td>

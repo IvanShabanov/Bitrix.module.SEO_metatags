@@ -178,6 +178,7 @@ class MainClass
         } else {
             $result = $this->strEntityDataClass::add($arFields);
         }
+        return $result;
     }
 
     public function getMeta($url)
