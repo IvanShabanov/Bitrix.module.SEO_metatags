@@ -20,6 +20,10 @@ class MainClass
 
     public function __construct($create = false)
     {
+        $this->init();
+    }
+
+    function init() {
         global $APPLICATION;
         if (!Loader::IncludeModule('highloadblock')) {
             return false;
@@ -170,6 +174,7 @@ class MainClass
 
     public function saveMeta($arFields)
     {
+        $this->init();
         if (empty($this->strEntityDataClass)) {
             return false;
         }
@@ -187,6 +192,7 @@ class MainClass
 
     public function getMeta(string $url)
     {
+        $this->init();
         if (empty($this->strEntityDataClass)) {
             return false;
         }
@@ -202,6 +208,7 @@ class MainClass
 
     public function getAllMeta()
     {
+        $this->init();
         if (empty($this->strEntityDataClass)) {
             return false;
         }
@@ -217,6 +224,7 @@ class MainClass
 
     public function clearAllMeta()
     {
+        $this->init();
         if (empty($this->strEntityDataClass)) {
             return false;
         }
