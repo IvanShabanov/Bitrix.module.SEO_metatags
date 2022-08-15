@@ -16,6 +16,7 @@ class MainClass
 {
     const NAME = 'SEOmetatags';
     const TABLE_NAME = 'seo_metatags';
+    var $strEntityDataClass;
 
     public function __construct($create = false)
     {
@@ -169,6 +170,9 @@ class MainClass
 
     public function saveMeta($arFields)
     {
+        if (empty($this->strEntityDataClass)) {
+            return false;
+        }
         $arQuery['filter'] = array('=UF_URL' => $arFields['UF_URL']);
         $arQuery['select'] = array('ID');
         $dbData = $this->strEntityDataClass::getList($arQuery);
@@ -181,8 +185,14 @@ class MainClass
         return $result;
     }
 
-    public function getMeta($url)
+    public function getMeta(string $url)
     {
+        if (empty($this->strEntityDataClass)) {
+            return false;
+        }
+        if (empty($url)) {
+            return false;
+        }
         $arQuery = array();
         $arQuery['filter'] = array('=UF_URL' => $url);
         $dbData = $this->strEntityDataClass::getList($arQuery);
@@ -192,6 +202,9 @@ class MainClass
 
     public function getAllMeta()
     {
+        if (empty($this->strEntityDataClass)) {
+            return false;
+        }
         $arItems = [];
         $rsData = $this->strEntityDataClass::getList(array(
             'order' => array('ID' => 'ASC'),
@@ -204,6 +217,9 @@ class MainClass
 
     public function clearAllMeta()
     {
+        if (empty($this->strEntityDataClass)) {
+            return false;
+        }
         $arItems = $this->getAllMeta();
         foreach ($arItems as $arItem) {
             $this->strEntityDataClass::delete($arItem['ID']);
