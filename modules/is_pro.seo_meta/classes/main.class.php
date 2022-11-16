@@ -34,9 +34,7 @@ class MainClass
             'filter' => ['=NAME' => self::NAME]
         ])->fetch();
         if (!$hlblock) {
-            if ($create) {
-                $this->CreateHL();
-            } else {
+            if (!$this->CreateHL()) {
                 $APPLICATION->throwException(Loc::getMessage('ISPRO_SEO_METATAGS_NOT_EXIST_HLBL'));
             }
         } else {
