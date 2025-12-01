@@ -1,18 +1,18 @@
-<?
+<?php
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_SET_1'] = 'Описание';
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_MAIN_TAB_TITLE_SET_1'] = 'Помощник установки метатегов на страницы';
 $MESS['ISPRO_SEO_METATAGS_OPTIONS_NOTE'] = '
 <p>Уставвливает на страницу мета теги</p>
 <ol>
-    <li>Title</li>
-    <li>Keywords</li>
-    <li>Description</li>
-    <li>H1</li>
-    <li>canonical</li>
-    <li>robots</li>
+	<li>Title</li>
+	<li>Keywords</li>
+	<li>Description</li>
+	<li>H1</li>
+	<li>canonical</li>
+	<li>robots</li>
 </ol>
 <p>Для установки метатегов на нужной странице в администратовной панели нажмите<br>
-    <img src="#MODULE_PATH#/install/images/admin_panel.jpg">
+	<img src="#MODULE_PATH#/install/images/admin_panel.jpg">
 </p>
 ';
 
