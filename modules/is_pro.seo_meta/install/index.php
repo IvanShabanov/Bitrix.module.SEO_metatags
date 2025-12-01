@@ -11,20 +11,22 @@ class is_pro_seo_meta extends CModule
 	public function __construct()
 	{
 		$arModuleVersion = [];
-		$arModuleCfg = [];
+		$arModuleCfg     = [];
 		if (file_exists(__DIR__ . "/version.php")) {
 			include(__DIR__ . "/version.php");
-		};
+		}
+		;
 		if (file_exists(__DIR__ . "/module.cfg.php")) {
 			include(__DIR__ . "/module.cfg.php");
-		};
-		$this->MODULE_ID		   = $arModuleCfg['MODULE_ID'];
-		$this->MODULE_VERSION	  = $arModuleVersion["VERSION"];
+		}
+		;
+		$this->MODULE_ID           = $arModuleCfg['MODULE_ID'];
+		$this->MODULE_VERSION      = $arModuleVersion["VERSION"];
 		$this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
-		$this->MODULE_NAME		 = Loc::getMessage("ISPRO_SEO_META_NAME");
+		$this->MODULE_NAME         = Loc::getMessage("ISPRO_SEO_META_NAME");
 		$this->MODULE_DESCRIPTION  = Loc::getMessage("ISPRO_SEO_META_DESC");
-		$this->PARTNER_NAME		= Loc::getMessage("ISPRO_SEO_PARTNER_NAME");
-		$this->PARTNER_URI		 = Loc::getMessage("ISPRO_SEO_PARTNER_URI");
+		$this->PARTNER_NAME        = Loc::getMessage("ISPRO_SEO_PARTNER_NAME");
+		$this->PARTNER_URI         = Loc::getMessage("ISPRO_SEO_PARTNER_URI");
 	}
 
 

@@ -44,7 +44,7 @@ class MainFunctions
 			}
 
 			$doc_root  = \Bitrix\Main\Application::getDocumentRoot();
-			$urlModule = str_replace($doc_root, '', __DIR__.'/..');
+			$urlModule = str_replace($doc_root, '', __DIR__ . '/..');
 			$APPLICATION->AddPanelButton(
 				array(
 					"ID"        => "BUTTON_" . $arModuleCfg['MODULE_ID'] . '_ID', //определяет уникальность кнопки

@@ -1,5 +1,5 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_before.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_before.php");
 
 \Bitrix\Main\Loader::includeModule('is_pro.seo_meta');
 
@@ -10,21 +10,22 @@ global $APPLICATION;
 
 $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
 if ($request->getpost('import') != '') {
-	$files = $request->getFile("IMPORT_CSV");
-	$charset= $request->getpost('charsetfile');
+	$files       = $request->getFile("IMPORT_CSV");
+	$charset     = $request->getpost('charsetfile');
 	$SEOmetatags = new \IS_PRO\SEO_metatags\MainClass();
 	if ($request->getpost('clearall') == 'Y') {
 		$SEOmetatags->clearAllMeta();
 		$message = new \CAdminMessage(array(
 			'MESSAGE' => Loc::getMessage('ISPRO_SEO_METATAGS_CLEARED'),
-			'TYPE' => 'OK'
-			));
+			'TYPE'    => 'OK'
+		));
 		echo $message->Show();
-	};
+	}
+	;
 
 	if (!empty($files)) {
 		$tmp_name = $files["tmp_name"];
-		$filename = __DIR__.'/seo_metagats_import.csv';
+		$filename = __DIR__ . '/seo_metagats_import.csv';
 		$isloaded = true;
 		if (!move_uploaded_file($tmp_name, $filename)) {
 			if (!copy($tmp_name, $filename)) {
@@ -33,9 +34,9 @@ if ($request->getpost('import') != '') {
 		}
 		if ($isloaded) {
 			$importData = @file($filename);
-			$fileError = false;
+			$fileError  = false;
 			if (is_array($importData)) {
-				foreach ($importData as $key=>$line) {
+				foreach ($importData as $key => $line) {
 					if ($key == 0) {
 						$arKeys = explode(';', trim($line));
 						if (is_array($arKeys)) {
@@ -50,15 +51,17 @@ if ($request->getpost('import') != '') {
 						$arValue = explode(';', trim($line));
 						if (is_array($arValue)) {
 							$arFields = [];
-							foreach ($arValue as $key=>$strVal) {
+							foreach ($arValue as $key => $strVal) {
 								if ($arKeys[$key] != 'ID') {
 									$strVal = trim($strVal, '"');
 									if ($charset != 'utf-8') {
 										$strVal = mb_convert_encoding($strVal, "utf-8", $charset);
 									}
 									$arFields[$arKeys[$key]] = $strVal;
-								};
-							};
+								}
+								;
+							}
+							;
 							$SEOmetatags->saveMeta($arFields);
 						} else {
 							$fileError = true;
@@ -72,22 +75,22 @@ if ($request->getpost('import') != '') {
 			if ($fileError) {
 				$message = new \CAdminMessage(array(
 					'MESSAGE' => Loc::getMessage('ISPRO_SEO_METATAGS_IMPORT_ERROR_FILE'),
-					'TYPE' => 'ERROR'
-					));
+					'TYPE'    => 'ERROR'
+				));
 				echo $message->Show();
 			} else {
 				$message = new \CAdminMessage(array(
 					'MESSAGE' => Loc::getMessage('ISPRO_SEO_METATAGS_IMPORTED'),
-					'TYPE' => 'OK'
-					));
+					'TYPE'    => 'OK'
+				));
 				echo $message->Show();
 			}
 			@unlink($filename);
 		} else {
 			$message = new \CAdminMessage(array(
 				'MESSAGE' => Loc::getMessage('ISPRO_SEO_METATAGS_IMPORT_ERROR'),
-				'TYPE' => 'ERROR'
-				));
+				'TYPE'    => 'ERROR'
+			));
 			echo $message->Show();
 		}
 	}
