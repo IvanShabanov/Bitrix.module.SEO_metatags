@@ -50,7 +50,7 @@ class is_pro_seo_meta extends CModule
 
 	public function InstallHlBl()
 	{
-		$obSeoMetatags = new \IS_PRO\SEO_metatags\MainClass(true);
+		//$obSeoMetatags = new \IS_PRO\SEO_metatags\MainClass(true);
 		if ($obSeoMetatags) {
 			return true;
 		} else {
